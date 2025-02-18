@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Search & Category Selection (Stacked Layout) -->
+    <LinearLayout
+        android:id="@+id/searchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Search Location -->
+        <EditText
+            android:id="@+id/locationSearchBar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter location"
+            android:padding="12dp"
+            android:background="@android:drawable/editbox_background"
+            android:textSize="16sp"
+            android:drawableStart="@android:drawable/ic_menu_mylocation" />
+
+        <!-- Select Category Dropdown -->
+        <AutoCompleteTextView
+            android:id="@+id/categoryDropdown"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Select category"
+            android:padding="16dp"
+            android:background="@android:drawable/editbox_background"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:importantForAccessibility="yes" />
+
+        <!-- Search Button -->
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Search"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:backgroundTint="#6200EE"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <!-- Google Map View (Full Screen Below Search UI) -->
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/searchLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dashboard"
+        android:textColor="#050505"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchLayout"
+        app:layout_constraintVertical_bias="0.941" />
+</androidx.constraintlayout.widget.ConstraintLayout>
