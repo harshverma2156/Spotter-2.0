@@ -49,19 +49,32 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.filament.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation ("com.google.android.gms:play-services-maps:18.1.0")
-    implementation ("com.google.android.gms:play-services-location:21.0.1")
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.github.bumptech.glide:glide:4.15.1")
-    implementation ("androidx.recyclerview:recyclerview:1.3.2")
-    implementation ("com.google.android.gms:play-services-maps:18.1.0")
-    implementation ("com.google.android.libraries.places:places:3.3.0")
-    implementation ("com.google.android.gms:play-services-location:21.0.1")
-    implementation ("com.google.firebase:firebase-auth-ktx:22.1.2")
+    implementation (libs.play.services.maps.v1810)
+    implementation (libs.play.services.location)
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.glide)
+    implementation (libs.androidx.recyclerview)
+    implementation (libs.play.services.maps.v1810)
+    implementation (libs.places)
+
+    implementation (libs.play.services.location)
+    implementation (libs.firebase.auth.ktx)
+
+
+    implementation(libs.mpandroidchart)
+
+//    implementation("com.github.PhilJay:MPAndroidChart:v3.0.3")
+
+//    implementation(files("libs/MPAndroidChart.aar"))
+//    implementation ("com.github.User:Repo:Tag")
+
+
+
 
 
 

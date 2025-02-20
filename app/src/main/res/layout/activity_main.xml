@@ -25,23 +25,25 @@
             android:id="@+id/locationSearchBar"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:background="@android:drawable/editbox_background"
+            android:drawableStart="@android:drawable/ic_menu_mylocation"
             android:hint="Enter location"
             android:padding="12dp"
-            android:background="@android:drawable/editbox_background"
-            android:textSize="16sp"
-            android:drawableStart="@android:drawable/ic_menu_mylocation" />
+            android:textColorHint="#0F0E0E"
+            android:textSize="16sp" />
 
         <!-- Select Category Dropdown -->
         <AutoCompleteTextView
             android:id="@+id/categoryDropdown"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Select category"
-            android:padding="16dp"
-            android:background="@android:drawable/editbox_background"
-            android:textSize="16sp"
             android:layout_marginTop="8dp"
-            android:importantForAccessibility="yes" />
+            android:background="@android:drawable/editbox_background"
+            android:hint="Select category"
+            android:importantForAccessibility="yes"
+            android:padding="16dp"
+            android:textColorHint="#090909"
+            android:textSize="16sp" />
 
         <!-- Search Button -->
         <Button
@@ -72,12 +74,17 @@
         android:id="@+id/switch3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dashboard"
+        android:text="@string/dashboard"
         android:textColor="#050505"
+        android:textColorHint="#090909"
+        android:textOff="@string/home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.869"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchLayout"
-        app:layout_constraintVertical_bias="0.941" />
+        app:layout_constraintVertical_bias="0.941"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

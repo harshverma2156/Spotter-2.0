@@ -1,6 +1,7 @@
 package com.example.spotter20
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -28,10 +29,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var searchButton: Button
     private lateinit var locationSearchBar: EditText
     private lateinit var categoryDropdown: AutoCompleteTextView
+    private lateinit var switchToggle: Switch
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)  // Loads your XML layout file
 
         // Initialize location services
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         locationSearchBar = findViewById(R.id.locationSearchBar)
         categoryDropdown = findViewById(R.id.categoryDropdown)
         searchButton = findViewById(R.id.searchButton)
+        switchToggle = findViewById(R.id.switch3)  // Find the Switch by its ID
 
         // Set up Google Map
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
@@ -53,6 +56,17 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         // Search button click listener
         searchButton.setOnClickListener {
             fetchEvents()
+        }
+
+        // Set listener for the switch to handle toggle events
+        switchToggle.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // Switch turned ON - Navigate to the New Activity
+                val intent = Intent(this, ChartActivity::class.java)
+                startActivity(intent)
+            } else {
+                // Switch turned OFF - Handle the action if needed (in this case, no action is required)
+            }
         }
     }
 
@@ -97,7 +111,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         val ticketmasterAPI = "https://app.ticketmaster.com/discovery/v2/events.json"
         val apiKey = "KA3GnExABT04Eh3tt8q2bC6jn4HAT4vr"
 
-        val requestUrl = "$ticketmasterAPI?latlong=$latitude,$longitude&radius=50&classificationName=$selectedCategory&apikey=$apiKey"
+        val requestUrl = "$ticketmasterAPI?lat long=$latitude,$longitude&radius=50&classificationName=$selectedCategory&apikey=$apiKey"
 
         val requestQueue = Volley.newRequestQueue(this)
 
@@ -129,12 +143,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                             map.addMarker(MarkerOptions().position(eventLocation).title(eventName))
                         }
 
-                        //Auto-zoom to the first event found
+                        // Auto-zoom to the first event found
                         if (firstEventLatLng != null) {
                             map.animateCamera(CameraUpdateFactory.newLatLngZoom(firstEventLatLng, 10f))
                         }
 
-                        Toast.makeText(this, "events found!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Events found!", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(this, "No events found near you!", Toast.LENGTH_LONG).show()
                     }
@@ -148,6 +162,4 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
         requestQueue.add(jsonObjectRequest)
     }
-
-
 }
